@@ -1,0 +1,215 @@
+{
+  "api": {
+    "name": "AzureNotificationHubsPlugin",
+    "slug": "azurenotificationhubsplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "register",
+        "signature": "(info: RegisterInfo) => Promise<void>",
+        "parameters": [
+          {
+            "name": "info",
+            "docs": "",
+            "type": "RegisterInfo"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "docs": "Register the app to receive push notifications.\n\nThis method will trigger the `'registration'` event with the push token or\n`'registrationError'` if there was a problem. It does not prompt the user for\nnotification permissions, use `PushNotifications.requestPermissions()` from\n`@capacitor/push-notifications` first.",
+        "complexTypes": [
+          "RegisterInfo"
+        ],
+        "slug": "register"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'registration', listenerFunc: (token: Token) => void) => Promise<PluginListenerHandle> & PluginListenerHandle",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'registration'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(token: Token) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle> & PluginListenerHandle",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "docs": "Called when the push notification registration finishes without problems.\n\nProvides the push notification token.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "Token"
+        ],
+        "slug": "addlistenerregistration"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'registrationError', listenerFunc: (error: RegistrationError) => void) => Promise<PluginListenerHandle> & PluginListenerHandle",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'registrationError'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(error: RegistrationError) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle> & PluginListenerHandle",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "docs": "Called when the push notification registration finished with problems.\n\nProvides an error with the registration problem.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "RegistrationError"
+        ],
+        "slug": "addlistenerregistrationerror"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "docs": "Remove all native listeners for this plugin.",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "RegisterInfo",
+      "slug": "registerinfo",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "notificationHubName",
+          "tags": [
+            {
+              "text": "1.0.0",
+              "name": "since"
+            }
+          ],
+          "docs": "The notification hub name.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "connectionString",
+          "tags": [
+            {
+              "text": "1.0.0",
+              "name": "since"
+            }
+          ],
+          "docs": "The connection string.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "deviceTag",
+          "tags": [
+            {
+              "text": "1.0.0",
+              "name": "since"
+            }
+          ],
+          "docs": "The device tag.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "Token",
+      "slug": "token",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "value",
+          "tags": [
+            {
+              "text": "1.0.0",
+              "name": "since"
+            }
+          ],
+          "docs": "On iOS it contains the APNS token.\nOn Android it contains the FCM token.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "RegistrationError",
+      "slug": "registrationerror",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "error",
+          "tags": [
+            {
+              "text": "1.0.0",
+              "name": "since"
+            }
+          ],
+          "docs": "Error message describing the registration failure.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
